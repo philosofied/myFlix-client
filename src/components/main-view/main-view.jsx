@@ -1,9 +1,12 @@
 import React from "react";
 import axios from "axios";
 
-import { Link } from 'react-router-dom';
-import { GenreView } from '../genre-view/genre-view';
-import { DirectorView } from '../director-view/director-view';
+import { About } from '../about/about';
+import { UpdateView } from '../update-view/update-view';
+import { ProfileView } from "../profile-view/profile-view";
+import { Link } from "react-router-dom";
+import { GenreView } from "../genre-view/genre-view";
+import { DirectorView } from "../director-view/director-view";
 import { RegistrationView } from "../registration-view/registration-view";
 import { LoginView } from "../login-view/login-view";
 import { MovieCard } from "../movie-card/movie-card";
@@ -121,61 +124,46 @@ class MainView extends React.Component {
                 <Button variant="outline-success">Search</Button>
               </Form>
               {!user ? (
-              <ul>
-                <Link to={`/`}>
-                  <Button 
-                    variant="link"
-                    className="navbar-link"
-                  >
-                    Sign In
-                  </Button>
-                </Link>
-                <Link to={`/register`}>
-                  <Button 
-                    variant="link"
-                    className="navbar-link"
-                  >
-                    Register
-                  </Button>
-                </Link>
-              </ul>
-            ) : (
-              <ul>
-                <Link to={`/`}>
-                  <Button 
-                    variant="link" 
-                    className="navbar-link"
-                    onClick={() => this.onLoggedOut()}
-                  >
-                    Sign Out
-                  </Button>
-                </Link>
-                <Link to={`/users/${user}`}>
-                  <Button 
-                    variant="link"
-                    className="navbar-link"
-                  >
-                    My Account
-                  </Button>
-                </Link>
-                <Link to={`/`}>
-                  <Button 
-                    variant="link"
-                    className="navbar-link"
-                  >
-                    Movies
-                  </Button>
-                </Link>
-                <Link to={`/about`}>
-                  <Button 
-                    variant="link"
-                    className="navbar-link"
-                  >
-                    About
-                  </Button>
-                </Link>
-              </ul>
-            )}
+                <ul>
+                  <Link to={`/`}>
+                    <Button variant="link" className="navbar-link">
+                      Sign In
+                    </Button>
+                  </Link>
+                  <Link to={`/register`}>
+                    <Button variant="link" className="navbar-link">
+                      Register
+                    </Button>
+                  </Link>
+                </ul>
+              ) : (
+                <ul>
+                  <Link to={`/`}>
+                    <Button
+                      variant="link"
+                      className="navbar-link"
+                      onClick={() => this.onLoggedOut()}
+                    >
+                      Sign Out
+                    </Button>
+                  </Link>
+                  <Link to={`/users/${user}`}>
+                    <Button variant="link" className="navbar-link">
+                      My Account
+                    </Button>
+                  </Link>
+                  <Link to={`/`}>
+                    <Button variant="link" className="navbar-link">
+                      Movies
+                    </Button>
+                  </Link>
+                  <Link to={`/about`}>
+                    <Button variant="link" className="navbar-link">
+                      About
+                    </Button>
+                  </Link>
+                </ul>
+              )}
             </Navbar.Collapse>
           </Navbar>
           <Row className="main-view justify-content-md-center">
@@ -208,6 +196,22 @@ class MainView extends React.Component {
               }}
             />
             {/* you keep the rest routes here */}
+            <Route
+              exact
+              path="/about"
+              render={() => <About />}
+            />
+            <Route
+            path="/update/:userId"
+            render={() => {
+              return <UpdateView />;
+            }}
+          />
+            <Route
+              exact
+              path="/users/:userId"
+              render={() => <ProfileView movies={movies} />}
+            />
             <Route
               path="/movies/:movieId"
               render={({ match }) => {
