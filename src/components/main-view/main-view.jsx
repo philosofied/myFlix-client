@@ -99,7 +99,7 @@ class MainView extends React.Component {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="mr-auto">
-                <Nav.Link href="#home">Home</Nav.Link>
+                {/* <Nav.Link href="#home">Home</Nav.Link>
                 <Nav.Link href="#link">Link</Nav.Link>
                 <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                   <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
@@ -113,7 +113,7 @@ class MainView extends React.Component {
                   <NavDropdown.Item href="#action/3.4">
                     Separated link
                   </NavDropdown.Item>
-                </NavDropdown>
+                </NavDropdown> */}
               </Nav>
               <Form inline>
                 <FormControl
@@ -166,7 +166,8 @@ class MainView extends React.Component {
               )}
             </Navbar.Collapse>
           </Navbar>
-          <Row className="main-view justify-content-md-center">
+          {/* <Row className="main-view justify-content-md-center"> */}
+          <Row xs={1} md={2} className="g-4">
             <Route
               exact
               path="/"
@@ -178,7 +179,7 @@ class MainView extends React.Component {
                     </Col>
                   );
                 return movies.map((m) => (
-                  <Col md={3} key={m._id}>
+                  <Col key={m._id}>
                     <MovieCard movie={m} />
                   </Col>
                 ));
